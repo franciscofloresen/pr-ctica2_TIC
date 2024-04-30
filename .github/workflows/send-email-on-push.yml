@@ -1,0 +1,26 @@
+name: Send Email Notification on Push
+on:
+  push:
+    branches:
+      - main
+      - feature_a
+      - feature_b
+
+jobs:
+  send_email:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Send email
+      uses: dawidd6/action-send-mail@v2
+      with:
+        server_address: smtp.gmail.com
+        server_port: 465
+        username: ${{ secrets.EMAIL_USERNAME }}
+        password: ${{ secrets.EMAIL_PASSWORD }}
+        subject: ${{ github.ref }} branch has been updated
+        body: The ${{ github.ref }} branch has received new commits.
+        to: destinatario@example.com
+        from: ${{ secrets.EMAIL_USERNAME }}
