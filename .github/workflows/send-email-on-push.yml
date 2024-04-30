@@ -22,5 +22,5 @@ jobs:
         password: ${{ secrets.EMAIL_PASSWORD }}
         subject: ${{ github.ref }} branch has been updated
         body: The ${{ github.ref }} branch has received new commits.
-        to: destinatario@example.com
+        to: is728238@iteso.mx
         from: ${{ secrets.EMAIL_USERNAME }}
